@@ -200,7 +200,19 @@ contract PlatziPunksDNA {
         "ShortHairTheCaesarSidePart"
     ];
 
-    // TODO: Calculate DNA
+    // This pseudo random function is deterministic and should not be used in production
+    // For production can use the Oracule Chainlink
+    function deterministicPseudoTandomDNA(uint256 _tokenId, address _minter)
+        public
+        pure
+        returns (uint256)
+    {
+        uint256 combinedParams = _tokenId + uint160(_minter);
+        bytes memory encodedParams = abi.encodePacked(combinedParams);
+        bytes32 hashedParams = keccak256(encodedParams);
+
+        return uint256(hashedParams);
+    }
 
     // Get attributes
     uint8 constant ADN_SECTION_SIZE = 2;
