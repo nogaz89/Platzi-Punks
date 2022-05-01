@@ -36,7 +36,7 @@ contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
     function _paramsURI(uint256 _dna) internal view returns (string memory) {
         string memory params;
 
-        // Los bloques sirven para no sobrecargar el stack de memory de Solidity
+        // Los bloques sirven para no sobrecargar el stack de memoria de Solidity
         {
             params = string(
                 abi.encodePacked(
