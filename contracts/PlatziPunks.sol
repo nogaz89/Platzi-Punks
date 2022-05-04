@@ -85,7 +85,7 @@ contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
     {
         require(
             _exists(tokenId),
-            "ERC721 Metadata: URI query for nonecistent token"
+            "ERC721 Metadata: URI query for nonecistent token "
         );
 
         uint256 dna = tokenDNA[tokenId];
