@@ -1,11 +1,11 @@
 const { expect } = require("chai");
 
-describe("Platzi Punks Contract", () => {
+describe("Hunters Contract", () => {
   const setup = async (maxSupply = 10000) => {
     const [owner] = await ethers.getSigners();
-    const PlatziPunks = await ethers.getContractFactory("PlatziPunks");
+    const Hunters = await ethers.getContractFactory("Hunters");
 
-    const deployed = await PlatziPunks.deploy(maxSupply);
+    const deployed = await Hunters.deploy(maxSupply);
 
     return {
       owner,
@@ -42,7 +42,7 @@ describe("Platzi Punks Contract", () => {
       await deployed.mint();
 
       // Assert the last minting
-      await expect(deployed.mint()).to.be.revertedWith("No PlatziPunks left");
+      await expect(deployed.mint()).to.be.revertedWith("No Hunters left");
     });
   });
 

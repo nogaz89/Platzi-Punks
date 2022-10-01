@@ -10,6 +10,13 @@ npx hardhat compile
 npx hardhat clean
 npx hardhat test
 npx hardhat node
-node scripts/sample-script.js
+
+# Deploy
+node scripts/deploy.js
+npx hardhat run scripts/deploy.js --network goerli
+
 npx hardhat help
+
+# Flatten contracts and save to file (for Etherscan verification)
+npx hardhat flatten > Flat.sol
 ```

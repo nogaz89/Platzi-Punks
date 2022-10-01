@@ -4,7 +4,6 @@
 // File @openzeppelin/contracts/utils/introspection/IERC165.sol@v4.6.0
 
 
-
 pragma solidity ^0.8.0;
 
 /**
@@ -1369,12 +1368,12 @@ library Base64 {
 }
 
 
-// File contracts/PlatziPunksDNA.sol
+// File contracts/HuntersDNA.sol
 
 
 pragma solidity ^0.8.0;
 
-contract PlatziPunksDNA {
+contract HuntersDNA {
     string[] private _accessoriesType = [
         "Blank",
         "Kurt",
@@ -1681,7 +1680,7 @@ contract PlatziPunksDNA {
 }
 
 
-// File contracts/PlatziPunks.sol
+// File contracts/Hunters.sol
 
 
 pragma solidity ^0.8.0;
@@ -1691,7 +1690,7 @@ pragma solidity ^0.8.0;
 
 
 
-contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
+contract Hunters is ERC721, ERC721Enumerable, HuntersDNA {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
@@ -1699,13 +1698,13 @@ contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
     uint256 public maxSupply;
     mapping(uint256 => uint256) public tokenDNA;
 
-    constructor(uint256 _maxSupply) ERC721("PlatziPunks", "PLPKS") {
+    constructor(uint256 _maxSupply) ERC721("Hunters", "PLPKS") {
         maxSupply = _maxSupply;
     }
 
     function mint() public {
         uint256 current = _idCounter.current();
-        require(current < maxSupply, "No PlatziPunks left");
+        require(current < maxSupply, "No Hunters left");
 
         tokenDNA[current] = deterministicPseudoTandomDNA(current, msg.sender);
         _safeMint(msg.sender, current);
@@ -1776,9 +1775,9 @@ contract PlatziPunks is ERC721, ERC721Enumerable, PlatziPunksDNA {
 
         string memory jsonURI = Base64.encode(
             abi.encodePacked(
-                '{ "name": "PlatziPunks #',
+                '{ "name": "Hunters #',
                 tokenId.toString(),
-                '", "description": "Platzi Punks are randomized Avataaars stored on chain to teach DApp development on Platzi", "image": "',
+                '", "description": "Hunters are randomized Avataaars stored on chain.", "image": "',
                 image,
                 '"}'
             )
